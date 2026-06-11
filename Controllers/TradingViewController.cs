@@ -49,25 +49,29 @@ namespace VK_Trading_Lab_Auto.Controllers
             }
             string message =
                     $"""
-                    {(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}
+                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
 
-                    Signal Price : {signal.Price:F2}
+                    🎯 Entry  ➜  *{entry:F2}*
 
-                    Entry : {entry:F2}
-                    SL    : {sl:F2}
-                    TP    : {tp:F2}
+                    🛑 Stop Loss  ➜  *{sl:F2}*
+
+                    💰 Take Profit  ➜  *{tp:F2}*
+
+                    ⚠️ _Risk Management Is Mandatory_
 
                     #VKTradingLab
                     """;
             string url =
                 $"https://api.telegram.org/bot{_settings.BotToken}/sendMessage";
 
-            var response = await httpClient.PostAsJsonAsync( url,
-            new
-            {
-                chat_id = _settings.ChatId,
-                text = message
-            });
+            var response = await httpClient.PostAsJsonAsync(
+                url,
+                new
+                {
+                    chat_id = _settings.ChatId,
+                    text = message,
+                    parse_mode = "Markdown"
+                });
 
             var telegramResponse =
                 await response.Content.ReadAsStringAsync();
