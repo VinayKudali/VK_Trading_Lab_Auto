@@ -22,6 +22,13 @@ namespace VK_Trading_Lab_Auto.Controllers
         [HttpPost]
         public async Task<IActionResult> Receive([FromBody] TradingViewXAUUSDSignal signal)
         {
+            Console.WriteLine("========== ALERT RECEIVED ==========");
+            Console.WriteLine($"Signal: {signal.Signal}");
+            Console.WriteLine($"Price : {signal.Price}");
+            Console.WriteLine($"Symbol: {signal.Symbol}");
+            Console.WriteLine($"Time  : {DateTime.UtcNow}");
+            Console.WriteLine("====================================");
+
             if (signal.Secret != "VK_XAU_2026")
             {
                 return Unauthorized();
