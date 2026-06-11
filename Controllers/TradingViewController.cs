@@ -22,13 +22,9 @@ namespace VK_Trading_Lab_Auto.Controllers
         [HttpPost]
         public async Task<IActionResult> Receive([FromBody] TradingViewXAUUSDSignal signal)
         {
-            Console.WriteLine("========== ALERT RECEIVED ==========");
-            Console.WriteLine($"Signal: {signal.Signal}");
-            Console.WriteLine($"Price : {signal.Price}");
-            Console.WriteLine($"Symbol: {signal.Symbol}");
-            Console.WriteLine($"Time  : {DateTime.UtcNow}");
-            Console.WriteLine("====================================");
 
+            Console.WriteLine($"ALERT RECEIVED | {signal.Signal} | {signal.Price} | {signal.Symbol}");
+            
             if (signal.Secret != "VK_XAU_2026")
             {
                 return Unauthorized();
@@ -77,6 +73,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                 await response.Content.ReadAsStringAsync();
 
             Console.WriteLine(telegramResponse);
+            Console.WriteLine("TELEGRAM SENT");
 
             return Ok();
         }
