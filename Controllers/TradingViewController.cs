@@ -73,5 +73,19 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             return Ok();
         }
+
+        [HttpGet("test-alert")]
+        public async Task<IActionResult> TestAlert()
+        {
+            var testSignal = new TradingViewXAUUSDSignal
+            {
+                Secret = "VK_XAU_2026",
+                Signal = "BUY",
+                Price = 3400,
+                Symbol = "XAUUSD"
+            };
+
+            return await Receive(testSignal);
+        }
     }
 }
