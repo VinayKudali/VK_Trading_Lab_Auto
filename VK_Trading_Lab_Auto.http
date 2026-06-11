@@ -1,0 +1,6 @@
+@VK_Trading_Lab_Auto_HostAddress = http://localhost:5257
+
+GET {{VK_Trading_Lab_Auto_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
