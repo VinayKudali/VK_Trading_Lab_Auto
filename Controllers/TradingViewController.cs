@@ -93,7 +93,7 @@ namespace VK_Trading_Lab_Auto.Controllers
             var testSignal = new TradingViewXAUUSDSignal
             {
                 Secret = "VK_XAU_2026",
-                Signal = " I love you Sushma, wanmna have sex with you",
+                Signal = "BUY",
                 Price = 3400,
                 Symbol = "XAUUSD"
             };
