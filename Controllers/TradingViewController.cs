@@ -33,19 +33,22 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             decimal entry;
             decimal sl;
-            decimal tp;
+            decimal tp1;
+            decimal tp2;
 
             if (signal.Signal?.ToUpper() == "BUY")
             {
-                entry = signal.Price - 3.5m;
-                sl = entry - 5.5m;
-                tp = entry + 9.5m;
+                entry = signal.Price - 3.0m;
+                sl = entry - 6.0m;
+                tp1 = entry + 9.5m;
+                tp2 = tp1 + 3.5m;
             }
             else
             {
-                entry = signal.Price + 3.5m;
-                sl = entry + 5.5m;
-                tp = entry - 9.5m;
+                entry = signal.Price + 3.0m;
+                sl = entry + 6.0m;
+                tp1 = entry - 9.5m;
+                tp2 = tp1 - 3.5m;
             }
             string message =
                     $"""
@@ -55,7 +58,9 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     🛑 Stop Loss  ➜  *{sl:F2}*
 
-                    💰 Take Profit  ➜  *{tp:F2}*
+                    💰 Take Profit 1  ➜  *{tp1:F2}*
+
+                    💰 Take Profit 2  ➜  *{tp2:F2}*
 
                     ⚠️ _Risk Management Is Mandatory_
 
