@@ -38,16 +38,16 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             if (signal.Signal?.ToUpper() == "BUY")
             {
-                entry = signal.Price - 3.0m;
-                sl = entry - 6.0m;
-                tp1 = entry + 9.5m;
+                entry = signal.Price - 3.5m;
+                sl = entry - 12.0m;
+                tp1 = entry + 15.5m;
                 tp2 = tp1 + 3.5m;
             }
             else
             {
-                entry = signal.Price + 3.0m;
-                sl = entry + 6.0m;
-                tp1 = entry - 9.5m;
+                entry = signal.Price + 3.5m;
+                sl = entry + 12.0m;
+                tp1 = entry - 15.5m;
                 tp2 = tp1 - 3.5m;
             }
             string message =
