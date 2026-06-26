@@ -97,33 +97,57 @@ namespace VK_Trading_Lab_Auto.Controllers
                         niftyTp = niftyEntry - 100;
                     }
 
-                string premiumMessage =
-                       $"""
-                        *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")}*
+                    string premiumMessage =
+                   $"""
+                    ═══════════════════════
 
-                        🎯 Entry ➜ *{niftyEntry:F2}*
+                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
 
-                        🛑 Stop Loss ➜ *{niftySl:F2}*
+                    ═══════════════════════
 
-                        💰 Target ➜ *{niftyTp:F2}*
+                    🎯 *ENTRY*
+                    `{niftyEntry:F2}`
 
-                        ⚠️ _Risk Management Is Mandatory_
+                    🛑 *STOP LOSS*
+                    `{niftySl:F2}`
 
-                        #VKTradingLab
-                        """;
+                    💰 *TARGET*
+                    `{niftyTp:F2}`
 
-                string freeMessage =
-                       $"""
-                        *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")}*
+                    ═══════════════════════
 
-                        🎯 Entry ➜ *{niftyEntry:F2}*
+                    ⚠️ _Risk Management Is Mandatory_
 
-                        🛑 Stop Loss ➜ *🔒 Premium Members Only*
+                    📊 _Wait for Entry Trigger_
 
-                        💰 Target ➜ *{niftyTp:F2}*
+                    #VKTradingLab
+                    """;
 
-                        #VKTradingLab
-                        """;
+                    string freeMessage =
+                   $"""
+                    ═══════════════════════
+
+                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
+
+                    ═══════════════════════
+
+                    🎯 *ENTRY*
+                    `{niftyEntry:F2}`
+
+                    🛑 *STOP LOSS*
+                    `🔒 Premium Members Only`
+
+                    💰 *TARGET*
+                    `{niftyTp:F2}`
+
+                    ═══════════════════════
+
+                    🌟 _Want Accurate SL & Live Trade Management?_
+
+                    👉 *Join VK Trading Lab Premium*
+
+                    #VKTradingLab
+                    """;
 
                     await Task.WhenAll(
                         _telegram.SendToNifty_SensexPremium(premiumMessage),
