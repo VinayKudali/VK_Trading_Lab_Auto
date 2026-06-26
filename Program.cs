@@ -1,3 +1,4 @@
+using VK_Trading_Lab_Auto;
 using VK_Trading_Lab_Auto.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.Configure<TelegramSettings>(
     builder.Configuration.GetSection("Telegram"));
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<TelegramService>();
 
 
 builder.Services.AddHttpClient();

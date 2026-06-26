@@ -23,7 +23,7 @@ namespace VK_Trading_Lab_Auto.Controllers
             var httpClient = _httpClientFactory.CreateClient();
 
             string botToken = _settings.BotToken;
-            string chatId = _settings.ChatId;
+            string chatId = _settings.XAUUSDChatId;
 
             string message = "🚀 VK Trading Lab Test Signal";
 
