@@ -134,7 +134,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
 
-                    🛑 *STOP LOSS* ➜ `🔒 Premium Members Only`
+                    🛑 *STOP LOSS* ➜ `🔒 Premium 🔒`
 
                     💰 *TARGET* ➜ *{niftyTp:F2}* 
 
