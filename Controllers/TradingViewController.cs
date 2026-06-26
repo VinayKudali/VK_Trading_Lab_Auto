@@ -111,8 +111,6 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     string premiumMessage =
                    $"""
-                    ═══════════════════════
-
                     *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
 
                     ═══════════════════════
@@ -134,8 +132,6 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     string freeMessage =
                    $"""
-                    ═══════════════════════
-
                     *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
 
                     ═══════════════════════
@@ -151,6 +147,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     🌟 _Want Accurate SL & Live Trade Management?_
 
                     👉 *Join VK Trading Lab Premium*
+                    👉*https://cosmofeed.com/vig/69b245b75079310013132506*
 
                     #VKTradingLab
                     """;
