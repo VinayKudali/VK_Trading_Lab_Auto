@@ -100,19 +100,18 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        niftySl = niftyEntry - 70;
-                        niftyTp = niftyEntry + 100;
+                        niftySl = niftyEntry - 67;
+                        niftyTp = niftyEntry + 97;
                     }
                     else
                     {
-                        niftySl = niftyEntry + 70;
-                        niftyTp = niftyEntry - 100;
+                        niftySl = niftyEntry + 67;
+                        niftyTp = niftyEntry - 97;
                     }
 
                     string premiumMessage =
                    $"""
                     *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
-
                     ═══════════════════════
 
                     🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
@@ -133,7 +132,6 @@ namespace VK_Trading_Lab_Auto.Controllers
                     string freeMessage =
                    $"""
                     *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
-
                     ═══════════════════════
 
                     🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
