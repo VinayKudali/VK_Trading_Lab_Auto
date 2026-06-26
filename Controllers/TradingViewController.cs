@@ -181,80 +181,43 @@ namespace VK_Trading_Lab_Auto.Controllers
         [HttpGet("test-premium")]
         public async Task<IActionResult> TestPremium()
         {
-            string premiumMessage =
-                """
-                🟢 NIFTY CE
+            var testSignal = new TradingViewSignal
+            {
+                Secret = "VK_NIFTY_2026",
+                Signal = "BUY",
+                Entry = 24580,
+                Symbol = "NIFTY"
+            };
 
-                Entry : 24580
-
-                SL : 24520
-
-                TP : 24680
-
-                #VKTradingLabPremium
-                """;
-
-            await _telegram.SendToNifty_SensexPremium(premiumMessage);
-
-            return Ok("Premium Message Sent");
+            return await Receive(testSignal);
         }
 
         [HttpGet("test-free")]
         public async Task<IActionResult> TestFree()
         {
-            string freeMessage =
-                """
-                🟢 NIFTY CE
+            var testSignal = new TradingViewSignal
+            {
+                Secret = "VK_NIFTY_2026",
+                Signal = "BUY",
+                Entry = 24580,
+                Symbol = "NIFTY"
+            };
 
-                Entry : 24580
-
-                SL : 🔒 Premium Members Only
-
-                TP : 24680
-
-                #VKTradingLabFree
-                """;
-
-            await _telegram.SendToNifty_SensexFree(freeMessage);
-
-            return Ok("Free Message Sent");
+            return await Receive(testSignal);
         }
 
         [HttpGet("test-all")]
         public async Task<IActionResult> TestAll()
         {
-            string premiumMessage =
-                    """
-                    🟢 NIFTY CE
+            var testSignal = new TradingViewSignal
+            {
+                Secret = "VK_NIFTY_2026",
+                Signal = "BUY",
+                Entry = 24580,
+                Symbol = "NIFTY"
+            };
 
-                    Entry : 24580
-
-                    SL : 24520
-
-                    TP : 24680
-
-                    #VKTradingLabPremium
-                    """;
-
-           string freeMessage =
-                    """
-                    🟢 NIFTY CE
-
-                    Entry : 24580
-
-                    SL : 🔒 Premium Members Only
-
-                    TP : 24680
-
-                    #VKTradingLabFree
-                    """;
-
-            await Task.WhenAll(
-                _telegram.SendToNifty_SensexPremium(premiumMessage),
-                _telegram.SendToNifty_SensexFree(freeMessage)
-            );
-
-            return Ok("Messages Sent");
+            return await Receive(testSignal);
         }
     
 }
