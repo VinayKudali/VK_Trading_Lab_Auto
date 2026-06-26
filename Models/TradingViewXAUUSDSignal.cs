@@ -2,18 +2,18 @@
 {
     public class TradingViewSignal
     {
-        public string Secret { get; set; }
+        public required string Secret { get; set; }
 
-        public string Symbol { get; set; }
+        public required string Symbol { get; set; }
 
-        public string Signal { get; set; }
+        public required string Signal { get; set; }
 
-        public decimal Entry { get; set; }
+        public required decimal Entry { get; set; }
 
-        public decimal StopLoss { get; set; }
+        public decimal? StopLoss { get; set; }
 
-        public decimal Target { get; set; }
+        public decimal? Target { get; set; }
 
-        public string ChannelType { get; set; }
+        public string? ChannelType { get; set; }
     }
 }
