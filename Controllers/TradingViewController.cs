@@ -25,6 +25,10 @@ namespace VK_Trading_Lab_Auto.Controllers
         [HttpPost]
         public async Task<IActionResult> Receive([FromBody] TradingViewSignal signal)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             Console.WriteLine($"ALERT RECEIVED | {signal.Signal} | {signal.Entry} | {signal.Symbol}");
 
@@ -105,14 +109,11 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     ═══════════════════════
 
-                    🎯 *ENTRY*
-                    `{niftyEntry:F2}`
+                    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
 
-                    🛑 *STOP LOSS*
-                    `{niftySl:F2}`
+                    🛑 *STOP LOSS* ➜ *{niftySl:F2}* 
 
-                    💰 *TARGET*
-                    `{niftyTp:F2}`
+                    💰 *TARGET*  ➜ *{niftyTp:F2}* 
 
                     ═══════════════════════
 
@@ -131,14 +132,11 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     ═══════════════════════
 
-                    🎯 *ENTRY*
-                    `{niftyEntry:F2}`
+                    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
 
-                    🛑 *STOP LOSS*
-                    `🔒 Premium Members Only`
+                    🛑 *STOP LOSS* ➜ `🔒 Premium Members Only`
 
-                    💰 *TARGET*
-                    `{niftyTp:F2}`
+                    💰 *TARGET* ➜ *{niftyTp:F2}* 
 
                     ═══════════════════════
 
