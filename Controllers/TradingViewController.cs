@@ -85,7 +85,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                         ⚠️ _Risk Management Is Mandatory_
 
-                        #VKTradingLab
+                        #VKTradingLab✍
                         """;
 
                     await _telegram.SendToXAUUSD(message);
@@ -126,7 +126,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     📊 _Wait for Entry Trigger_
 
-                    #VKTradingLab
+                    #VKTradingLab✍
                     """;
 
                     string freeMessage =
@@ -144,10 +144,10 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     🌟 _Want Accurate SL & Live Trade Management?_
 
-                    👉 *Join VK Trading Lab Premium*
+                    👇🏻 *Join VK Trading Lab Premium* 👇🏻
                     👉*https://cosmofeed.com/vig/69b245b75079310013132506*
 
-                    #VKTradingLab
+                    #VKTradingLab✍
                     """;
 
                     await Task.WhenAll(
