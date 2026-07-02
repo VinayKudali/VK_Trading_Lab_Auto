@@ -85,15 +85,15 @@ namespace VK_Trading_Lab_Auto.Controllers
                        $"""
                         *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
 
-                        🎯 Entry ➜ *{xauEntry:F2}*
+                        🎯 Entry ➜ *{xauEntry:0.##}*
 
-                        🛑 Stop Loss ➜ *{xauSl:F2}*
+                        🛑 Stop Loss ➜ *{xauSl:0.##}*
 
-                        💰 Take Profit 1 ➜ *{xauTp1:F2}*
+                        💰 Take Profit 1 ➜ *{xauTp1:0.##}*
 
-                        💰 Take Profit 2 ➜ *{xauTp2:F2}*
+                        💰 Take Profit 2 ➜ *{xauTp2:0.##}*
 
-                        💰 Take Profit 3 ➜ *{xauTp3:F2}*
+                        💰 Take Profit 3 ➜ *{xauTp3:0.##}*
 
                         ⚠️ _Risk Management Is Mandatory_
 
