@@ -97,7 +97,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                         ⚠️ _Risk Management Is Mandatory_
 
-                        ⚠️ _If the entry is not triggered within 30 mins, Just Ignore the Signal and wait for the new Signal_
+                        ⚠️ _If not triggered within 30 mins, Ignore the signal._
 
                         #VKTradingLab..✍
                         """;
