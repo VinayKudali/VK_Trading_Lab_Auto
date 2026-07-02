@@ -93,7 +93,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                         💰 Take Profit 2 ➜ *{xauTp2:F2}*
 
-                        💰 Take Profit 2 ➜ *{xauTp3:F2}*
+                        💰 Take Profit 3 ➜ *{xauTp3:F2}*
 
                         ⚠️ _Risk Management Is Mandatory_
 
