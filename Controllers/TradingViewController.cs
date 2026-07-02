@@ -55,21 +55,31 @@ namespace VK_Trading_Lab_Auto.Controllers
                     decimal xauSl;
                     decimal xauTp1;
                     decimal xauTp2;
+                    decimal xauTp3;
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        xauEntry = signal.Entry - 3.5m;
-                        xauSl = xauEntry - 12m;
-                        xauTp1 = xauEntry + 12.5m;
-                        xauTp2 = xauTp1 + 3.5m;
+                        xauEntry = signal.Entry - 2.0m;
+                        xauSl = xauEntry - 13.5m;
+                        xauTp1 = xauEntry + 7.5m;
+                        xauTp2 = xauEntry + 13.5m;
+                        xauTp3 = xauTp1 + 5.0m;
                     }
                     else
                     {
-                        xauEntry = signal.Entry + 3.5m;
-                        xauSl = xauEntry + 12m;
-                        xauTp1 = xauEntry - 12.5m;
-                        xauTp2 = xauTp1 - 3.5m;
+                        xauEntry = signal.Entry + 2.0m;
+                        xauSl = xauEntry + 13.5m;
+                        xauTp1 = xauEntry - 7.5m;
+                        xauTp2 = xauEntry - 13.5m;
+                        xauTp3 = xauTp1 - 5.0m;
                     }
+
+                    // Round values for Telegram
+                    xauEntry = RoundForTelegram(xauEntry);
+                    xauSl = RoundForTelegram(xauSl);
+                    xauTp1 = RoundForTelegram(xauTp1);
+                    xauTp2 = RoundForTelegram(xauTp2);
+                    xauTp3 = RoundForTelegram(xauTp3);
 
                     message =
                        $"""
@@ -82,6 +92,8 @@ namespace VK_Trading_Lab_Auto.Controllers
                         💰 Take Profit 1 ➜ *{xauTp1:F2}*
 
                         💰 Take Profit 2 ➜ *{xauTp2:F2}*
+
+                        💰 Take Profit 2 ➜ *{xauTp3:F2}*
 
                         ⚠️ _Risk Management Is Mandatory_
 
@@ -221,6 +233,18 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             return await Receive(testSignal);
         }
-    
-}
+
+        private decimal RoundForTelegram(decimal value)
+        {
+            decimal fraction = value % 1;
+
+            if (fraction >= 0.49m && fraction <= 0.51m)
+                return Math.Floor(value) + 0.5m;
+
+            return fraction > 0.5m
+                ? Math.Ceiling(value)
+                : Math.Floor(value);
+        }
+
+    }
 }
