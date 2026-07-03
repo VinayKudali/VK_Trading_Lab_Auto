@@ -59,18 +59,18 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        xauEntry = signal.Entry - 2.0m;
-                        xauSl = xauEntry - 13.5m;
+                        xauEntry = signal.Entry - 2.5m;
+                        xauSl = xauEntry - 13.0m;
                         xauTp1 = xauEntry + 7.5m;
-                        xauTp2 = xauEntry + 13.5m;
+                        xauTp2 = xauEntry + 12.0m;
                         xauTp3 = xauTp1 + 5.0m;
                     }
                     else
                     {
-                        xauEntry = signal.Entry + 2.0m;
-                        xauSl = xauEntry + 13.5m;
+                        xauEntry = signal.Entry + 2.5m;
+                        xauSl = xauEntry + 13.0m;
                         xauTp1 = xauEntry - 7.5m;
-                        xauTp2 = xauEntry - 13.5m;
+                        xauTp2 = xauEntry - 12.0m;
                         xauTp3 = xauTp1 - 5.0m;
                     }
 
