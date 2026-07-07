@@ -63,7 +63,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                         xauSl = xauEntry - 13.0m;
                         xauTp1 = xauEntry + 7.5m;
                         xauTp2 = xauEntry + 12.0m;
-                        xauTp3 = xauTp1 + 5.0m;
+                        xauTp3 = xauTp2 + 5.0m;
                     }
                     else
                     {
@@ -71,7 +71,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                         xauSl = xauEntry + 13.0m;
                         xauTp1 = xauEntry - 7.5m;
                         xauTp2 = xauEntry - 12.0m;
-                        xauTp3 = xauTp1 - 5.0m;
+                        xauTp3 = xauTp2 - 5.0m;
                     }
 
                     // Round values for Telegram
