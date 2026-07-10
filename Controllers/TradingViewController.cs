@@ -99,8 +99,68 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                         ⚠️ _If not triggered within 30 mins, Ignore the signal._
 
+                        📊 *Strategy* ➜ _XAUU$D B-Band_
+
                         #VKTradingLab..✍
                         """;
+
+                    await _telegram.SendToXAUUSD(message);
+
+                    break;
+
+                case "VK_XAU_REVERSAL":
+
+                    decimal entry = signal.Entry;
+
+                    decimal sl;
+                    decimal tp1;
+                    decimal tp2;
+                    decimal tp3;
+
+                    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sl = entry - 13;
+                        tp1 = entry + 8;
+                        tp2 = entry + 14;
+                        tp3 = entry + 20;
+                    }
+                    else
+                    {
+                        sl = entry + 13;
+                        tp1 = entry - 8;
+                        tp2 = entry - 14;
+                        tp3 = entry - 20;
+                    }
+
+                    // Round values for Telegram
+                    entry = RoundForTelegram(entry);
+                    sl = RoundForTelegram(sl);
+                    tp1 = RoundForTelegram(tp1);
+                    tp2 = RoundForTelegram(tp2);
+                    tp3 = RoundForTelegram(tp3);
+
+                    message =
+                    $"""
+                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
+
+                    🎯 Entry ➜ *{entry:0.##}*
+
+                    🛑 Stop Loss ➜ *{sl:0.##}*
+
+                    💰 Take Profit 1 ➜ *{tp1:0.##}*
+
+                    💰 Take Profit 2 ➜ *{tp2:0.##}*
+
+                    💰 Take Profit 3 ➜ *{tp3:0.##}*
+
+                    ⚠️ _Risk Management Is Mandatory_
+
+                    ⚠️ _If not triggered within 30 mins, Ignore the signal._
+
+                    📊 *Strategy* ➜ _Retracement Confirmation_
+
+                    #VKTradingLab..✍
+                    """;
 
                     await _telegram.SendToXAUUSD(message);
 
