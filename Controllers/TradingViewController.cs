@@ -60,17 +60,17 @@ namespace VK_Trading_Lab_Auto.Controllers
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
                         xauEntry = signal.Entry - 2.5m;
-                        xauSl = xauEntry - 13.0m;
+                        xauSl = xauEntry - 10.0m;
                         xauTp1 = xauEntry + 7.5m;
-                        xauTp2 = xauEntry + 12.0m;
+                        xauTp2 = xauEntry + 11.5m;
                         xauTp3 = xauTp2 + 5.0m;
                     }
                     else
                     {
                         xauEntry = signal.Entry + 2.5m;
-                        xauSl = xauEntry + 13.0m;
+                        xauSl = xauEntry + 10.0m;
                         xauTp1 = xauEntry - 7.5m;
-                        xauTp2 = xauEntry - 12.0m;
+                        xauTp2 = xauEntry - 11.5m;
                         xauTp3 = xauTp2 - 5.0m;
                     }
 
@@ -110,26 +110,26 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                 case "VK_XAU_REVERSAL":
 
-                    decimal entry = signal.Entry;
-
+                    decimal entry;
                     decimal sl;
                     decimal tp1;
                     decimal tp2;
                     decimal tp3;
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                    {
-                        sl = entry - 13;
-                        tp1 = entry + 8;
-                        tp2 = entry + 14;
-                        tp3 = entry + 20;
+                    {   entry = signal.Entry - 2.5m;
+                        sl = entry - 9.0m;
+                        tp1 = entry + 8.5m;
+                        tp2 = entry + 13.5m;
+                        tp3 = entry + 18.0m;
                     }
                     else
                     {
-                        sl = entry + 13;
-                        tp1 = entry - 8;
-                        tp2 = entry - 14;
-                        tp3 = entry - 20;
+                        entry = signal.Entry + 2.5m;
+                        sl = entry + 9.0m;
+                        tp1 = entry - 8.5m;
+                        tp2 = entry - 13.5m;
+                        tp3 = entry - 18.0m;
                     }
 
                     // Round values for Telegram
