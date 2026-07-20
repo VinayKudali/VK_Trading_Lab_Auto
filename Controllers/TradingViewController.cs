@@ -119,16 +119,16 @@ namespace VK_Trading_Lab_Auto.Controllers
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {   entry = signal.Entry - 2.5m;
                         sl = entry - 9.0m;
-                        tp1 = entry + 8.5m;
-                        tp2 = entry + 13.5m;
+                        tp1 = entry + 8.0m;
+                        tp2 = entry + 13.0m;
                         tp3 = entry + 18.0m;
                     }
                     else
                     {
                         entry = signal.Entry + 2.5m;
                         sl = entry + 9.0m;
-                        tp1 = entry - 8.5m;
-                        tp2 = entry - 13.5m;
+                        tp1 = entry - 8.0m;
+                        tp2 = entry - 13.0m;
                         tp3 = entry - 18.0m;
                     }
 
