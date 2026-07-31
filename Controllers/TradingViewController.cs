@@ -166,6 +166,68 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     break;
 
+                case "VK_XAU_STACK":
+
+                    decimal stackEntry1;
+                    decimal stackEntry2;
+                    decimal stackSl;
+                    decimal stackTp1;
+                    decimal stackTp2;
+                    decimal stackTp3;
+                    decimal stackTp4;
+
+                    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
+                    {
+                        stackEntry1 = signal.Entry - 2.0m;
+                        stackEntry2 = signal.Entry - 5.0m;
+                        stackSl = stackEntry1 - 10.5m;
+                        stackTp1 = stackEntry1 + 8.0m;
+                        stackTp2 = stackEntry1 + 13.0m;
+                        stackTp3 = stackEntry1 + 18.0m;
+                        stackTp4 = stackEntry1 + 23.0m;
+                    }
+                    else
+                    {
+                        stackEntry1 = signal.Entry + 2.0m;
+                        stackEntry2 = signal.Entry + 5.0m;
+                        stackSl = stackEntry1 + 10.5m;
+                        stackTp1 = stackEntry1 - 8.0m;
+                        stackTp2 = stackEntry1 - 13.0m;
+                        stackTp3 = stackEntry1 - 18.0m;
+                        stackTp4 = stackEntry1 - 23.0m;
+                    }
+
+                    // Round values for Telegram
+                    stackEntry1 = RoundForTelegram(stackEntry1);
+                    stackEntry2 = RoundForTelegram(stackEntry2);
+                    stackSl = RoundForTelegram(stackSl);
+                    stackTp1 = RoundForTelegram(stackTp1);
+                    stackTp2 = RoundForTelegram(stackTp2);
+                    stackTp3 = RoundForTelegram(stackTp3);
+                    stackTp4 = RoundForTelegram(stackTp4);
+
+                    message =
+                    $"""
+                    *{(signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase) ? "🟢" : "🔴")} XAUUSD {signal.Signal.ToUpperInvariant()}*
+                    🎯 Entry Zone ➜ *{stackEntry1:0.##}* - *{stackEntry2:0.##}*
+
+                    💰 Take Profit 1 ➜ *{stackTp1:0.##}*
+                    💰 Take Profit 2 ➜ *{stackTp2:0.##}*
+                    💰 Take Profit 3 ➜ *{stackTp3:0.##}*
+                    💰 Take Profit 4 ➜ *{stackTp4:0.##}*
+
+                    🛑 Stop Loss ➜ *{stackSl:0.##}*
+
+                    ⚠️ _Risk Management Is Mandatory_
+                    📊 *Strategy* ➜ _XAUU$D Stack_
+
+                    #VKTradingLab..✍
+                    """;
+
+                    await _telegram.SendToXAUUSD(message);
+
+                    break;
+
                 case "VK_NIFTY_2026":
 
                     decimal niftyEntry = signal.Entry;
@@ -238,6 +300,20 @@ namespace VK_Trading_Lab_Auto.Controllers
             Console.WriteLine("TELEGRAM SENT");
 
             return Ok();
+        }
+
+        [HttpGet("test-stack")]
+        public async Task<IActionResult> TestStack()
+        {
+            var testSignal = new TradingViewSignal
+            {
+                Secret = "VK_XAU_STACK",
+                Signal = "BUY",
+                Entry = 4107,
+                Symbol = "XAUUSD"
+            };
+
+            return await Receive(testSignal);
         }
 
         [HttpGet("test-alert")]
