@@ -178,23 +178,23 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        stackEntry1 = signal.Entry - 2.0m;
+                        stackEntry1 = signal.Entry - 2.5m;
                         stackEntry2 = signal.Entry - 5.0m;
                         stackSl = stackEntry1 - 10.5m;
                         stackTp1 = stackEntry1 + 8.0m;
                         stackTp2 = stackEntry1 + 13.0m;
-                        stackTp3 = stackEntry1 + 18.0m;
-                        stackTp4 = stackEntry1 + 23.0m;
+                        stackTp3 = stackEntry1 + 17.0m;
+                        stackTp4 = stackEntry1 + 21.0m;
                     }
                     else
                     {
-                        stackEntry1 = signal.Entry + 2.0m;
+                        stackEntry1 = signal.Entry + 2.5m;
                         stackEntry2 = signal.Entry + 5.0m;
                         stackSl = stackEntry1 + 10.5m;
                         stackTp1 = stackEntry1 - 8.0m;
                         stackTp2 = stackEntry1 - 13.0m;
-                        stackTp3 = stackEntry1 - 18.0m;
-                        stackTp4 = stackEntry1 - 23.0m;
+                        stackTp3 = stackEntry1 - 17.0m;
+                        stackTp4 = stackEntry1 - 21.0m;
                     }
 
                     // Round values for Telegram
