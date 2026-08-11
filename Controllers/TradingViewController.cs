@@ -273,6 +273,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     🛑 Stop Loss ➜ *{stackSl:0.##}*
 
                     ⚠️ _Risk Management Is Mandatory_
+                    📊 _💥USE SUITABLE LOT SIZE BASED ON YOUR CAPITAL 🙏_
 
                     #VKTradingLab..✍
                     """;
