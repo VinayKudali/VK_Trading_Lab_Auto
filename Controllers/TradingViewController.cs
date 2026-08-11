@@ -49,124 +49,178 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             switch (signal.Secret)
             {
-                case "VK_XAU_2026":
+                //    case "VK_XAU_2026":
 
-                    decimal xauEntry;
-                    decimal xauSl;
-                    decimal xauTp1;
-                    decimal xauTp2;
-                    decimal xauTp3;
+                //        decimal xauEntry;
+                //        decimal xauSl;
+                //        decimal xauTp1;
+                //        decimal xauTp2;
+                //        decimal xauTp3;
 
-                    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                    {
-                        xauEntry = signal.Entry - 2.5m;
-                        xauSl = xauEntry - 10.0m;
-                        xauTp1 = xauEntry + 7.5m;
-                        xauTp2 = xauEntry + 11.5m;
-                        xauTp3 = xauTp2 + 5.0m;
-                    }
-                    else
-                    {
-                        xauEntry = signal.Entry + 2.5m;
-                        xauSl = xauEntry + 10.0m;
-                        xauTp1 = xauEntry - 7.5m;
-                        xauTp2 = xauEntry - 11.5m;
-                        xauTp3 = xauTp2 - 5.0m;
-                    }
+                //        if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
+                //        {
+                //            xauEntry = signal.Entry - 2.5m;
+                //            xauSl = xauEntry - 10.0m;
+                //            xauTp1 = xauEntry + 7.5m;
+                //            xauTp2 = xauEntry + 11.5m;
+                //            xauTp3 = xauTp2 + 5.0m;
+                //        }
+                //        else
+                //        {
+                //            xauEntry = signal.Entry + 2.5m;
+                //            xauSl = xauEntry + 10.0m;
+                //            xauTp1 = xauEntry - 7.5m;
+                //            xauTp2 = xauEntry - 11.5m;
+                //            xauTp3 = xauTp2 - 5.0m;
+                //        }
 
-                    // Round values for Telegram
-                    xauEntry = RoundForTelegram(xauEntry);
-                    xauSl = RoundForTelegram(xauSl);
-                    xauTp1 = RoundForTelegram(xauTp1);
-                    xauTp2 = RoundForTelegram(xauTp2);
-                    xauTp3 = RoundForTelegram(xauTp3);
+                //        // Round values for Telegram
+                //        xauEntry = RoundForTelegram(xauEntry);
+                //        xauSl = RoundForTelegram(xauSl);
+                //        xauTp1 = RoundForTelegram(xauTp1);
+                //        xauTp2 = RoundForTelegram(xauTp2);
+                //        xauTp3 = RoundForTelegram(xauTp3);
 
-                    message =
-                       $"""
-                        *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
+                //        message =
+                //           $"""
+                //            *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
 
-                        🎯 Entry ➜ *{xauEntry:0.##}*
+                //            🎯 Entry ➜ *{xauEntry:0.##}*
 
-                        🛑 Stop Loss ➜ *{xauSl:0.##}*
+                //            🛑 Stop Loss ➜ *{xauSl:0.##}*
 
-                        💰 Take Profit 1 ➜ *{xauTp1:0.##}*
+                //            💰 Take Profit 1 ➜ *{xauTp1:0.##}*
 
-                        💰 Take Profit 2 ➜ *{xauTp2:0.##}*
+                //            💰 Take Profit 2 ➜ *{xauTp2:0.##}*
 
-                        💰 Take Profit 3 ➜ *{xauTp3:0.##}*
+                //            💰 Take Profit 3 ➜ *{xauTp3:0.##}*
 
-                        ⚠️ _Risk Management Is Mandatory_
+                //            ⚠️ _Risk Management Is Mandatory_
 
-                        ⚠️ _If not triggered within 30 mins, Ignore the signal._
+                //            ⚠️ _If not triggered within 30 mins, Ignore the signal._
 
-                        📊 *Strategy* ➜ _XAUU$D B-Band_
+                //            📊 *Strategy* ➜ _XAUU$D B-Band_
 
-                        #VKTradingLab..✍
-                        """;
+                //            #VKTradingLab..✍
+                //            """;
 
-                    await _telegram.SendToXAUUSD(message);
+                //        await _telegram.SendToXAUUSD(message);
 
-                    break;
+                //        break;
 
-                case "VK_XAU_REVERSAL":
+                //    case "VK_XAU_REVERSAL":
 
-                    decimal entry;
-                    decimal sl;
-                    decimal tp1;
-                    decimal tp2;
-                    decimal tp3;
+                //        decimal entry;
+                //        decimal sl;
+                //        decimal tp1;
+                //        decimal tp2;
+                //        decimal tp3;
 
-                    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                    {   entry = signal.Entry - 2.5m;
-                        sl = entry - 9.0m;
-                        tp1 = entry + 8.0m;
-                        tp2 = entry + 13.0m;
-                        tp3 = entry + 18.0m;
-                    }
-                    else
-                    {
-                        entry = signal.Entry + 2.5m;
-                        sl = entry + 9.0m;
-                        tp1 = entry - 8.0m;
-                        tp2 = entry - 13.0m;
-                        tp3 = entry - 18.0m;
-                    }
+                //        if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
+                //        {   entry = signal.Entry - 2.5m;
+                //            sl = entry - 9.0m;
+                //            tp1 = entry + 8.0m;
+                //            tp2 = entry + 13.0m;
+                //            tp3 = entry + 18.0m;
+                //        }
+                //        else
+                //        {
+                //            entry = signal.Entry + 2.5m;
+                //            sl = entry + 9.0m;
+                //            tp1 = entry - 8.0m;
+                //            tp2 = entry - 13.0m;
+                //            tp3 = entry - 18.0m;
+                //        }
 
-                    // Round values for Telegram
-                    entry = RoundForTelegram(entry);
-                    sl = RoundForTelegram(sl);
-                    tp1 = RoundForTelegram(tp1);
-                    tp2 = RoundForTelegram(tp2);
-                    tp3 = RoundForTelegram(tp3);
+                //        // Round values for Telegram
+                //        entry = RoundForTelegram(entry);
+                //        sl = RoundForTelegram(sl);
+                //        tp1 = RoundForTelegram(tp1);
+                //        tp2 = RoundForTelegram(tp2);
+                //        tp3 = RoundForTelegram(tp3);
 
-                    message =
-                    $"""
-                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
+                //        message =
+                //        $"""
+                //        *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
 
-                    🎯 Entry ➜ *{entry:0.##}*
+                //        🎯 Entry ➜ *{entry:0.##}*
 
-                    🛑 Stop Loss ➜ *{sl:0.##}*
+                //        🛑 Stop Loss ➜ *{sl:0.##}*
 
-                    💰 Take Profit 1 ➜ *{tp1:0.##}*
+                //        💰 Take Profit 1 ➜ *{tp1:0.##}*
 
-                    💰 Take Profit 2 ➜ *{tp2:0.##}*
+                //        💰 Take Profit 2 ➜ *{tp2:0.##}*
 
-                    💰 Take Profit 3 ➜ *{tp3:0.##}*
+                //        💰 Take Profit 3 ➜ *{tp3:0.##}*
 
-                    ⚠️ _Risk Management Is Mandatory_
+                //        ⚠️ _Risk Management Is Mandatory_
 
-                    ⚠️ _If not triggered within 30 mins, Ignore the signal._
+                //        ⚠️ _If not triggered within 30 mins, Ignore the signal._
 
-                    📊 *Strategy* ➜ _Retracement Confirmation_
+                //        📊 *Strategy* ➜ _Retracement Confirmation_
 
-                    #VKTradingLab..✍
-                    """;
+                //        #VKTradingLab..✍
+                //        """;
 
-                    await _telegram.SendToXAUUSD(message);
+                //        await _telegram.SendToXAUUSD(message);
 
-                    break;
+                //        break;
 
                 case "VK_XAU_STACK":
+
+                    var signalType = signal.Signal?.Trim().ToUpperInvariant();
+
+                    // CLOSE BUY
+                    // Green -> Red
+                    if (signalType == "CLOSE_BUY")
+                    {
+                        message =
+                           $"""
+                            *🔴 XAUUSD — CLOSE BUY*
+
+                            ⚠️ _Close any existing BUY trade quickly._
+                            🔄 _Trend changed from Bullish → Bearish_
+                            📍 Closing Price ➜ *{signal.Entry:0.##}*
+
+                            #VKTradingLab..✍
+                            """;
+
+                        await _telegram.SendToXAUUSD(message);
+
+                        Console.WriteLine("CLOSE BUY TELEGRAM SENT");
+
+                        return Ok(new
+                        {
+                            success = true,
+                            message = "Close Buy alert sent"
+                        });
+                    }
+
+                    // CLOSE SELL
+                    // Red -> Green
+                    if (signalType == "CLOSE_SELL")
+                    {
+                        message =
+                           $"""
+                            *🟢 XAUUSD — CLOSE SELL*
+
+                            ⚠️ _Close any existing SELL trade quickly._
+                            🔄 _Trend changed from Bearish → Bullish_
+                            📍 Closing Price ➜ *{signal.Entry:0.##}*
+
+                            #VKTradingLab..✍
+                            """;
+
+                        await _telegram.SendToXAUUSD(message);
+
+                        Console.WriteLine("CLOSE SELL TELEGRAM SENT");
+
+                        return Ok(new
+                        {
+                            success = true,
+                            message = "Close Sell alert sent"
+                        });
+                    }
 
                     decimal stackEntry1;
                     decimal stackEntry2;
@@ -219,7 +273,6 @@ namespace VK_Trading_Lab_Auto.Controllers
                     🛑 Stop Loss ➜ *{stackSl:0.##}*
 
                     ⚠️ _Risk Management Is Mandatory_
-                    📊 *Strategy* ➜ _XAUU$D Stack_
 
                     #VKTradingLab..✍
                     """;
@@ -228,70 +281,70 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     break;
 
-                case "VK_NIFTY_2026":
+                //case "VK_NIFTY_2026":
 
-                    decimal niftyEntry = signal.Entry;
-                    decimal niftySl;
-                    decimal niftyTp;
+                //    decimal niftyEntry = signal.Entry;
+                //    decimal niftySl;
+                //    decimal niftyTp;
 
-                    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                    {
-                        niftySl = niftyEntry - 67;
-                        niftyTp = niftyEntry + 97;
-                    }
-                    else
-                    {
-                        niftySl = niftyEntry + 67;
-                        niftyTp = niftyEntry - 97;
-                    }
+                //    if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
+                //    {
+                //        niftySl = niftyEntry - 67;
+                //        niftyTp = niftyEntry + 97;
+                //    }
+                //    else
+                //    {
+                //        niftySl = niftyEntry + 67;
+                //        niftyTp = niftyEntry - 97;
+                //    }
 
-                    string premiumMessage =
-                   $"""
-                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
-                    ═══════════════════════
+                //    string premiumMessage =
+                //   $"""
+                //    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
+                //    ═══════════════════════
 
-                    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
+                //    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
 
-                    🛑 *STOP LOSS* ➜ *{niftySl:F2}* 
+                //    🛑 *STOP LOSS* ➜ *{niftySl:F2}* 
 
-                    💰 *TARGET*  ➜ *{niftyTp:F2}* 
+                //    💰 *TARGET*  ➜ *{niftyTp:F2}* 
 
-                    ═══════════════════════
+                //    ═══════════════════════
 
-                    ⚠️ _Risk Management Is Mandatory_
+                //    ⚠️ _Risk Management Is Mandatory_
 
-                    📊 _Wait for Entry Trigger_
+                //    📊 _Wait for Entry Trigger_
 
-                    #VKTradingLab..✍
-                    """;
+                //    #VKTradingLab..✍
+                //    """;
 
-                    string freeMessage =
-                   $"""
-                    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
-                    ═══════════════════════
+                //    string freeMessage =
+                //   $"""
+                //    *{(signal.Signal == "BUY" ? "🟢" : "🔴")} NIFTY {(signal.Signal == "BUY" ? "CE" : "PE")} SIGNAL*
+                //    ═══════════════════════
 
-                    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
+                //    🎯 *ENTRY* ➜ *{niftyEntry:F2}* 
 
-                    🛑 *STOP LOSS* ➜ `🔒 Premium 🔒`
+                //    🛑 *STOP LOSS* ➜ `🔒 Premium 🔒`
 
-                    💰 *TARGET* ➜ *{niftyTp:F2}* 
+                //    💰 *TARGET* ➜ *{niftyTp:F2}* 
 
-                    ═══════════════════════
+                //    ═══════════════════════
 
-                    🌟 _Want Accurate SL & Live Trade Management?_
+                //    🌟 _Want Accurate SL & Live Trade Management?_
 
-                    👇🏻 *Join VK Trading Lab Premium* 👇🏻
+                //    👇🏻 *Join VK Trading Lab Premium* 👇🏻
 
-                    👉*https://cosmofeed.com/vig/69b245b75079310013132506*
+                //    👉*https://cosmofeed.com/vig/69b245b75079310013132506*
 
-                    #VKTradingLab..✍
-                    """;
+                //    #VKTradingLab..✍
+                //    """;
 
-                    await Task.WhenAll(
-                        _telegram.SendToNifty_SensexPremium(premiumMessage),
-                        _telegram.SendToNifty_SensexFree(freeMessage));
+                //    await Task.WhenAll(
+                //        _telegram.SendToNifty_SensexPremium(premiumMessage),
+                //        _telegram.SendToNifty_SensexFree(freeMessage));
 
-                    break;
+                //    break;
 
                 default:
                     return Unauthorized("Invalid Secret");
