@@ -232,7 +232,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        stackEntry1 = signal.Entry - 2.5m;
+                        stackEntry1 = signal.Entry - 2.25m;
                         stackEntry2 = signal.Entry - 5.0m;
                         stackSl = stackEntry1 - 10.5m;
                         stackTp1 = stackEntry1 + 8.0m;
@@ -242,7 +242,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     }
                     else
                     {
-                        stackEntry1 = signal.Entry + 2.5m;
+                        stackEntry1 = signal.Entry + 2.25m;
                         stackEntry2 = signal.Entry + 5.0m;
                         stackSl = stackEntry1 + 10.5m;
                         stackTp1 = stackEntry1 - 8.0m;
@@ -273,7 +273,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     🛑 Stop Loss ➜ *{stackSl:0.##}*
 
                     ⚠️ _Risk Management is Mandatory_
-                    📊 _💥USE SUITABLE LOT SIZE BASED ON YOUR CAPITAL 🙏_
+                    📊 _💥Use Correct Lot SIZE Based On Your CAPITAL 🙏_
 
                     #VKTradingLab..✍
                     """;
