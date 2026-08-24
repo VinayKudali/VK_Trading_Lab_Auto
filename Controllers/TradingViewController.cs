@@ -265,15 +265,15 @@ namespace VK_Trading_Lab_Auto.Controllers
                     *{(signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase) ? "🟢" : "🔴")} XAUUSD {signal.Signal.ToUpperInvariant()}*
                     🎯 Entry Zone ➜ *{stackEntry1:0.##}* - *{stackEntry2:0.##}*
 
-                    💰 Take Profit 1 ➜ *{stackTp1:0.##}*
-                    💰 Take Profit 2 ➜ *{stackTp2:0.##}*
-                    💰 Take Profit 3 ➜ *{stackTp3:0.##}*
-                    💰 Take Profit 4 ➜ *{stackTp4:0.##}*
+                    💰 TP 1 ➜ *{stackTp1:0.##}*
+                    💰 TP 2 ➜ *{stackTp2:0.##}*
+                    💰 TP 3 ➜ *{stackTp3:0.##}*
+                    💰 TP 4 ➜ *{stackTp4:0.##}*
 
                     🛑 Stop Loss ➜ *{stackSl:0.##}*
 
                     ⚠️ _Risk Management is Mandatory_
-                    📊 _💥Use Correct Lot SIZE Based On Your CAPITAL 🙏_
+                    🙏 _Use Correct Lot SIZE Based On Your CAPITAL_
 
                     #VKTradingLab..✍
                     """;
