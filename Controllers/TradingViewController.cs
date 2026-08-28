@@ -232,7 +232,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
-                        stackEntry1 = signal.Entry - 2.75m;
+                        stackEntry1 = signal.Entry - 2.37m;
                         stackEntry2 = signal.Entry - 5.0m;
                         stackSl = stackEntry1 - 10.5m;
                         stackTp1 = stackEntry1 + 8.0m;
@@ -242,7 +242,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     }
                     else
                     {
-                        stackEntry1 = signal.Entry + 2.75m;
+                        stackEntry1 = signal.Entry + 2.37m;
                         stackEntry2 = signal.Entry + 5.0m;
                         stackSl = stackEntry1 + 10.5m;
                         stackTp1 = stackEntry1 - 8.0m;
