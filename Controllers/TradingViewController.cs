@@ -49,122 +49,74 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             switch (signal.Secret)
             {
-                //    case "VK_XAU_2026":
+                case "VK_XAU_EMA":
 
-                //        decimal xauEntry;
-                //        decimal xauSl;
-                //        decimal xauTp1;
-                //        decimal xauTp2;
-                //        decimal xauTp3;
+                    var emaSignal = signal.Signal?.Trim().ToUpperInvariant();
 
-                //        if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                //        {
-                //            xauEntry = signal.Entry - 2.5m;
-                //            xauSl = xauEntry - 10.0m;
-                //            xauTp1 = xauEntry + 7.5m;
-                //            xauTp2 = xauEntry + 11.5m;
-                //            xauTp3 = xauTp2 + 5.0m;
-                //        }
-                //        else
-                //        {
-                //            xauEntry = signal.Entry + 2.5m;
-                //            xauSl = xauEntry + 10.0m;
-                //            xauTp1 = xauEntry - 7.5m;
-                //            xauTp2 = xauEntry - 11.5m;
-                //            xauTp3 = xauTp2 - 5.0m;
-                //        }
+                    if (emaSignal != "BUY" && emaSignal != "SELL")
+                    {
+                        return BadRequest("Invalid EMA signal. Expected BUY or SELL.");
+                    }
 
-                //        // Round values for Telegram
-                //        xauEntry = RoundForTelegram(xauEntry);
-                //        xauSl = RoundForTelegram(xauSl);
-                //        xauTp1 = RoundForTelegram(xauTp1);
-                //        xauTp2 = RoundForTelegram(xauTp2);
-                //        xauTp3 = RoundForTelegram(xauTp3);
+                    decimal entry1;
+                    decimal entry2;
+                    decimal sl;
+                    decimal tp1;
+                    decimal tp2;
+                    decimal tp3;
+                    decimal tp4;
 
-                //        message =
-                //           $"""
-                //            *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
+                    if (emaSignal == "BUY")
+                    {
+                        entry1 = signal.Entry - 1.5m;
+                        entry2 = signal.Entry - 4.0m;
+                        entry1 = RoundForTelegram(entry1);
+                        entry2 = RoundForTelegram(entry2);
 
-                //            🎯 Entry ➜ *{xauEntry:0.##}*
+                        sl = entry1 - 9.0m;
+                        tp1 = entry1 + 8.0m;
+                        tp2 = entry1 + 13.0m;
+                        tp3 = entry1 + 18.0m;
+                        tp4 = entry1 + 23.0m;
+                    }
+                    else
+                    {
+                        entry1 = signal.Entry + 1.5m;
+                        entry2 = signal.Entry + 4.0m;
+                        entry1 = RoundForTelegram(entry1);
+                        entry2 = RoundForTelegram(entry2);
 
-                //            🛑 Stop Loss ➜ *{xauSl:0.##}*
+                        sl = entry1 + 9.0m;
+                        tp1 = entry1 - 8.0m;
+                        tp2 = entry1 - 13.0m;
+                        tp3 = entry1 - 18.0m;
+                        tp4 = entry1 - 23.0m;
+                    }
 
-                //            💰 Take Profit 1 ➜ *{xauTp1:0.##}*
+                    message =
+                    $"""
+                        *{(emaSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {emaSignal}*
+                        🎯 Entry Zone ➜ *{entry1:0.##}* - *{entry2:0.##}*
 
-                //            💰 Take Profit 2 ➜ *{xauTp2:0.##}*
+                        💰 TP 1 ➜ *{tp1:0.##}*
+                        💰 TP 2 ➜ *{tp2:0.##}*
+                        💰 TP 3 ➜ *{tp3:0.##}*
+                        💰 TP 4 ➜ *{tp4:0.##}*
 
-                //            💰 Take Profit 3 ➜ *{xauTp3:0.##}*
+                        🛑 SL ➜ *{sl:0.##}*
 
-                //            ⚠️ _Risk Management Is Mandatory_
+                        ⚠️ _Risk Management is Mandatory_
+                        🙏 _Use Correct Lot SIZE Based On Your CAPITAL_
+                        📊 *Strategy* ➜ __E20M30A__
 
-                //            ⚠️ _If not triggered within 30 mins, Ignore the signal._
+                        #VKTradingLab..✍
+                     """;
 
-                //            📊 *Strategy* ➜ _XAUU$D B-Band_
+                    await _telegram.SendToXAUUSD(message);
 
-                //            #VKTradingLab..✍
-                //            """;
+                    Console.WriteLine($"EMA {emaSignal} TELEGRAM SENT");
 
-                //        await _telegram.SendToXAUUSD(message);
-
-                //        break;
-
-                //    case "VK_XAU_REVERSAL":
-
-                //        decimal entry;
-                //        decimal sl;
-                //        decimal tp1;
-                //        decimal tp2;
-                //        decimal tp3;
-
-                //        if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
-                //        {   entry = signal.Entry - 2.5m;
-                //            sl = entry - 9.0m;
-                //            tp1 = entry + 8.0m;
-                //            tp2 = entry + 13.0m;
-                //            tp3 = entry + 18.0m;
-                //        }
-                //        else
-                //        {
-                //            entry = signal.Entry + 2.5m;
-                //            sl = entry + 9.0m;
-                //            tp1 = entry - 8.0m;
-                //            tp2 = entry - 13.0m;
-                //            tp3 = entry - 18.0m;
-                //        }
-
-                //        // Round values for Telegram
-                //        entry = RoundForTelegram(entry);
-                //        sl = RoundForTelegram(sl);
-                //        tp1 = RoundForTelegram(tp1);
-                //        tp2 = RoundForTelegram(tp2);
-                //        tp3 = RoundForTelegram(tp3);
-
-                //        message =
-                //        $"""
-                //        *{(signal.Signal == "BUY" ? "🟢" : "🔴")} XAUUSD {signal.Signal}*
-
-                //        🎯 Entry ➜ *{entry:0.##}*
-
-                //        🛑 Stop Loss ➜ *{sl:0.##}*
-
-                //        💰 Take Profit 1 ➜ *{tp1:0.##}*
-
-                //        💰 Take Profit 2 ➜ *{tp2:0.##}*
-
-                //        💰 Take Profit 3 ➜ *{tp3:0.##}*
-
-                //        ⚠️ _Risk Management Is Mandatory_
-
-                //        ⚠️ _If not triggered within 30 mins, Ignore the signal._
-
-                //        📊 *Strategy* ➜ _Retracement Confirmation_
-
-                //        #VKTradingLab..✍
-                //        """;
-
-                //        await _telegram.SendToXAUUSD(message);
-
-                //        break;
+                    break;
 
                 case "VK_XAU_STACK":
 
@@ -176,7 +128,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     {
                         message =
                            $"""
-                            *🔴 XAUUSD — CLOSE BUY*
+                            *🔴 #XAUUSD — CLOSE BUY*
 
                             ⚠️ _Close any existing BUY trade quickly._
                             🔄 _Trend changed from Bullish → Bearish_
@@ -202,7 +154,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     {
                         message =
                            $"""
-                            *🟢 XAUUSD — CLOSE SELL*
+                            *🟢 #XAUUSD — CLOSE SELL*
 
                             ⚠️ _Close any existing SELL trade quickly._
                             🔄 _Trend changed from Bearish → Bullish_
@@ -233,7 +185,9 @@ namespace VK_Trading_Lab_Auto.Controllers
                     if (signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase))
                     {
                         stackEntry1 = signal.Entry - 2.37m;
+                        stackEntry1 = RoundForTelegram(stackEntry1);
                         stackEntry2 = signal.Entry - 5.0m;
+                        stackEntry2 = RoundForTelegram(stackEntry2);
                         stackSl = stackEntry1 - 10.5m;
                         stackTp1 = stackEntry1 + 8.0m;
                         stackTp2 = stackEntry1 + 13.0m;
@@ -243,22 +197,15 @@ namespace VK_Trading_Lab_Auto.Controllers
                     else
                     {
                         stackEntry1 = signal.Entry + 2.37m;
+                        stackEntry1 = RoundForTelegram(stackEntry1);
                         stackEntry2 = signal.Entry + 5.0m;
+                        stackEntry2 = RoundForTelegram(stackEntry2);
                         stackSl = stackEntry1 + 10.5m;
                         stackTp1 = stackEntry1 - 8.0m;
                         stackTp2 = stackEntry1 - 13.0m;
                         stackTp3 = stackEntry1 - 17.0m;
                         stackTp4 = stackEntry1 - 21.0m;
                     }
-
-                    // Round values for Telegram
-                    stackEntry1 = RoundForTelegram(stackEntry1);
-                    stackEntry2 = RoundForTelegram(stackEntry2);
-                    stackSl = RoundForTelegram(stackSl);
-                    stackTp1 = RoundForTelegram(stackTp1);
-                    stackTp2 = RoundForTelegram(stackTp2);
-                    stackTp3 = RoundForTelegram(stackTp3);
-                    stackTp4 = RoundForTelegram(stackTp4);
 
                     message =
                     $"""
@@ -270,7 +217,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                     💰 TP 3 ➜ *{stackTp3:0.##}*
                     💰 TP 4 ➜ *{stackTp4:0.##}*
 
-                    🛑 Stop Loss ➜ *{stackSl:0.##}*
+                    🛑 SL ➜ *{stackSl:0.##}*
 
                     ⚠️ _Risk Management is Mandatory_
                     🙏 _Use Correct Lot SIZE Based On Your CAPITAL_
