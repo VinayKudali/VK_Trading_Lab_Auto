@@ -68,29 +68,25 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (emaSignal == "BUY")
                     {
-                        entry1 = signal.Entry - 1.5m;
-                        entry2 = signal.Entry - 4.0m;
-                        entry1 = RoundForTelegram(entry1);
-                        entry2 = RoundForTelegram(entry2);
+                        entry1 = signal.Entry - 2.0m;
+                        entry2 = signal.Entry - 5.0m;
 
-                        sl = entry1 - 9.0m;
-                        tp1 = entry1 + 8.0m;
-                        tp2 = entry1 + 13.0m;
-                        tp3 = entry1 + 18.0m;
-                        tp4 = entry1 + 23.0m;
+                        sl = entry1 - 12.0m;
+                        tp1 = entry1 + 15.0m;
+                        tp2 = entry1 + 25.0m;
+                        tp3 = entry1 + 35.0m;
+                        tp4 = entry1 + 55.0m;
                     }
                     else
                     {
-                        entry1 = signal.Entry + 1.5m;
-                        entry2 = signal.Entry + 4.0m;
-                        entry1 = RoundForTelegram(entry1);
-                        entry2 = RoundForTelegram(entry2);
+                        entry1 = signal.Entry + 2.0m;
+                        entry2 = signal.Entry + 5.0m;
 
-                        sl = entry1 + 9.0m;
-                        tp1 = entry1 - 8.0m;
-                        tp2 = entry1 - 13.0m;
-                        tp3 = entry1 - 18.0m;
-                        tp4 = entry1 - 23.0m;
+                        sl = entry1 + 12.0m;
+                        tp1 = entry1 - 15.0m;
+                        tp2 = entry1 - 25.0m;
+                        tp3 = entry1 - 35.0m;
+                        tp4 = entry1 - 55.0m;
                     }
 
                     message =
@@ -106,8 +102,8 @@ namespace VK_Trading_Lab_Auto.Controllers
                         🛑 SL ➜ *{sl:0.##}*
 
                         ⚠️ _Risk Management is Mandatory_
-                        🙏 _Use Correct Lot SIZE Based On Your CAPITAL_
-                        📊 *Strategy* ➜ __E20M30A__
+                        🙏 _Use Proper Lot SIZE_
+                        📊 *Strategy* ➜ _E40M190A_
 
                         #VKTradingLab..✍
                      """;
