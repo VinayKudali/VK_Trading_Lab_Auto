@@ -94,10 +94,10 @@ namespace VK_Trading_Lab_Auto.Controllers
                         *{(emaSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {emaSignal}*
                         🎯 Entry Zone ➜ *{entry1:0.##}* - *{entry2:0.##}*
 
-                        💰 TP 1 ➜ *{tp1:0.##}*
-                        💰 TP 2 ➜ *{tp2:0.##}*
-                        💰 TP 3 ➜ *{tp3:0.##}*
-                        💰 TP 4 ➜ *{tp4:0.##}*
+                          TP 1 ➜ *{tp1:0.##}*
+                          TP 2 ➜ *{tp2:0.##}*
+                          TP 3 ➜ *{tp3:0.##}*
+                          TP 4 ➜ *{tp4:0.##}*
 
                         🛑 SL ➜ *{sl:0.##}*
 
@@ -205,7 +205,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     message =
                     $"""
-                    *{(signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase) ? "🟢" : "🔴")} XAUUSD {signal.Signal.ToUpperInvariant()}*
+                    *{(signal.Signal.Equals("BUY", StringComparison.OrdinalIgnoreCase) ? "🟢" : "🔴")} #XAUUSD {signal.Signal.ToUpperInvariant()}*
                     🎯 Entry Zone ➜ *{stackEntry1:0.##}* - *{stackEntry2:0.##}*
 
                     💰 TP 1 ➜ *{stackTp1:0.##}*
