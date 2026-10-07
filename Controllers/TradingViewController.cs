@@ -49,6 +49,57 @@ namespace VK_Trading_Lab_Auto.Controllers
 
             switch (signal.Secret)
             {
+                case "VK_XAU_TV":
+
+                    var tvSignal = signal.Signal?.Trim().ToUpperInvariant();
+
+                    if (tvSignal != "BUY" && tvSignal != "SELL")
+                    {
+                        return BadRequest("Invalid TradeVision signal. Expected BUY or SELL.");
+                    }
+
+                    const decimal tvOffset = 3.0m;   // indicator: Entry Offset
+                    const decimal tvSlPoints = 10.0m; // indicator: Stop Loss Points
+                    const decimal tvTpPoints = 24.0m; // indicator: Take Profit Points
+
+                    decimal tvEntry;
+                    decimal tvSl;
+                    decimal tvTp;
+
+                    if (tvSignal == "BUY")
+                    {
+                        tvEntry = signal.Entry + tvOffset;   // Buy Stop above signal close
+                        tvSl = tvEntry - tvSlPoints;
+                        tvTp = tvEntry + tvTpPoints;
+                    }
+                    else
+                    {
+                        tvEntry = signal.Entry - tvOffset;   // Sell Stop below signal close
+                        tvSl = tvEntry + tvSlPoints;
+                        tvTp = tvEntry - tvTpPoints;
+                    }
+
+                    message =
+                    $"""
+                    *{(tvSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {tvSignal} {(tvSignal == "BUY" ? "STOP" : "STOP")}*
+                    🎯 Entry ➜ *{tvEntry:0.##}*
+
+                    💰 TP ➜ *{tvTp:0.##}*
+                    🛑 SL ➜ *{tvSl:0.##}*
+
+                    ⚠️ _Risk Management is Mandatory_
+                    🙏 _Use Proper Lot SIZE_
+                    📊 *Strategy* ➜ _TradeVision Pro_
+
+                    #VKTradingLab..✍
+                    """;
+
+                    await _telegram.SendToXAUUSD(message);
+
+                    Console.WriteLine($"TRADEVISION {tvSignal} TELEGRAM SENT");
+
+                    break;
+
                 case "VK_XAU_EMA":
 
                     var emaSignal = signal.Signal?.Trim().ToUpperInvariant();
@@ -367,6 +418,18 @@ namespace VK_Trading_Lab_Auto.Controllers
             };
 
             return await Receive(testSignal);
+        }
+
+        [HttpGet("test-tv")]
+        public async Task<IActionResult> TestTradeVision()
+        {
+            return await Receive(new TradingViewSignal
+            {
+                Secret = "VK_XAU_TV",
+                Signal = "BUY",
+                Entry = 4107,
+                Symbol = "XAUUSD"
+            });
         }
 
         private decimal RoundForTelegram(decimal value)
