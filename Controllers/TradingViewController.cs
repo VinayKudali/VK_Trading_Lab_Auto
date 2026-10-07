@@ -81,7 +81,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     message =
                     $"""
-                    *{(tvSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {tvSignal} {(tvSignal == "BUY" ? "STOP" : "STOP")}*
+                    *{(tvSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {tvSignal}*
                     🎯 Entry ➜ *{tvEntry:0.##}*
 
                     💰 TP ➜ *{tvTp:0.##}*
@@ -89,7 +89,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     ⚠️ _Risk Management is Mandatory_
                     🙏 _Use Proper Lot SIZE_
-                    📊 *Strategy* ➜ _TradeVision Pro_
+                    📊 *Strategy* ➜ _VK TradeVision Pro_
 
                     #VKTradingLab..✍
                     """;
