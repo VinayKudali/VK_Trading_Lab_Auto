@@ -60,7 +60,7 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     const decimal tvOffset = 3.0m;   // indicator: Entry Offset
                     const decimal tvSlPoints = 10.0m; // indicator: Stop Loss Points
-                    const decimal tvTpPoints = 24.0m; // indicator: Take Profit Points
+                    const decimal tvTpPoints = 26.0m; // indicator: Take Profit Points
 
                     decimal tvEntry;
                     decimal tvSl;
@@ -119,31 +119,31 @@ namespace VK_Trading_Lab_Auto.Controllers
 
                     if (emaSignal == "BUY")
                     {
-                        entry1 = signal.Entry - 2.0m;
-                        entry2 = signal.Entry - 5.0m;
+                        entry1 = signal.Entry - 3.4m;
+                        //entry2 = signal.Entry - 5.0m;
 
-                        sl = entry1 - 12.0m;
-                        tp1 = entry1 + 15.0m;
-                        tp2 = entry1 + 25.0m;
-                        tp3 = entry1 + 35.0m;
-                        tp4 = entry1 + 55.0m;
+                        sl = entry1 - 10.6m;
+                        tp1 = entry1 + 6.5m;
+                        tp2 = entry1 + 12.9m; //Best And Preferred TP
+                        tp3 = entry1 + 25.0m;
+                        tp4 = entry1 + 33.4m;
                     }
                     else
                     {
-                        entry1 = signal.Entry + 2.0m;
-                        entry2 = signal.Entry + 5.0m;
+                        entry1 = signal.Entry + 3.4m;
+                        //entry2 = signal.Entry + 5.0m;
 
-                        sl = entry1 + 12.0m;
-                        tp1 = entry1 - 15.0m;
-                        tp2 = entry1 - 25.0m;
-                        tp3 = entry1 - 35.0m;
-                        tp4 = entry1 - 55.0m;
+                        sl = entry1 + 10.6m;
+                        tp1 = entry1 - 6.5m;
+                        tp2 = entry1 - 12.9m; //Best And Preferred TP
+                        tp3 = entry1 - 25.0m;
+                        tp4 = entry1 - 33.4m;
                     }
 
                     message =
                     $"""
                         *{(emaSignal == "BUY" ? "🟢" : "🔴")} #XAUUSD {emaSignal}*
-                        🎯 Entry Zone ➜ *{entry1:0.##}* - *{entry2:0.##}*
+                        🎯 Entry At ➜ *{entry1:0.##}*
 
                           TP 1 ➜ *{tp1:0.##}*
                           TP 2 ➜ *{tp2:0.##}*
