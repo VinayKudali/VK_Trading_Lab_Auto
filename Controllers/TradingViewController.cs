@@ -148,6 +148,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                           TP 1 ➜ *{tp1:0.##}*
                           TP 2 ➜ *{tp2:0.##}*
                           TP 3 ➜ *{tp3:0.##}*
+
                         🛑 SL ➜ *{sl:0.##}*
 
                         ⚠️ _Risk Management is Mandatory_
