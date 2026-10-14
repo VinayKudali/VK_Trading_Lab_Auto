@@ -126,7 +126,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                         tp1 = entry1 + 6.5m;
                         tp2 = entry1 + 12.9m; //Best And Preferred TP
                         tp3 = entry1 + 25.0m;
-                        tp4 = entry1 + 33.4m;
+                        //tp4 = entry1 + 33.4m;
                     }
                     else
                     {
@@ -137,7 +137,7 @@ namespace VK_Trading_Lab_Auto.Controllers
                         tp1 = entry1 - 6.5m;
                         tp2 = entry1 - 12.9m; //Best And Preferred TP
                         tp3 = entry1 - 25.0m;
-                        tp4 = entry1 - 33.4m;
+                        //tp4 = entry1 - 33.4m;
                     }
 
                     message =
@@ -148,8 +148,6 @@ namespace VK_Trading_Lab_Auto.Controllers
                           TP 1 ➜ *{tp1:0.##}*
                           TP 2 ➜ *{tp2:0.##}*
                           TP 3 ➜ *{tp3:0.##}*
-                          TP 4 ➜ *{tp4:0.##}*
-
                         🛑 SL ➜ *{sl:0.##}*
 
                         ⚠️ _Risk Management is Mandatory_
